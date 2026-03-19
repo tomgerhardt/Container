@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is user authenticated?
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    // Helper: is user a member of this group?
+    function isMember(groupId) {
+      return isAuth() && exists(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid));
+    }
+
+    // Helper: is user an admin of this group?
+    function isAdmin(groupId) {
+      return isAuth() &&
+        get(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Helper: is user a super admin?
+    function isSuperAdmin() {
+      return isAuth() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isSuperAdmin == true;
+    }
+
+    // Users
+    match /users/{uid} {
+      allow read: if isAuth();
+      allow write: if isAuth() && request.auth.uid == uid;
+    }
+
+    // Group memberships (flat collection for reverse lookup)
+    match /groupMemberships/{docId} {
+      allow read: if isAuth() && resource.data.uid == request.auth.uid;
+      allow write: if isAuth();
+    }
+
+    // Groups
+    match /groups/{groupId} {
+      allow read: if isMember(groupId);
+      allow create: if isAuth();
+      allow update: if isAdmin(groupId);
+      allow delete: if isAdmin(groupId);
+
+      // Members subcollection
+      match /members/{uid} {
+        allow read: if isMember(groupId);
+        allow write: if isAdmin(groupId) || (isAuth() && request.auth.uid == uid);
+      }
+
+      // Events subcollection
+      match /events/{eventId} {
+        allow read: if isMember(groupId);
+        allow create: if isAdmin(groupId);
+        allow update: if isAdmin(groupId);
+        allow delete: if isAdmin(groupId);
+
+        // RSVPs subcollection
+        match /rsvps/{uid} {
+          allow read: if isMember(groupId);
+          allow write: if isAuth() && request.auth.uid == uid;
+        }
+      }
+
+      // Resources subcollection
+      match /resources/{resourceId} {
+        allow read: if isMember(groupId);
+        allow create: if isMember(groupId);
+        allow update: if isAdmin(groupId) || (isAuth() && resource.data.addedBy == request.auth.uid);
+        allow delete: if isAdmin(groupId) || (isAuth() && resource.data.addedBy == request.auth.uid);
+      }
+    }
+
+    // Invites
+    match /invites/{inviteId} {
+      allow read: if true; // Anyone with the link can read it to join
+      allow create: if isAuth();
+      allow delete: if isAuth() && resource.data.createdBy == request.auth.uid;
+    }
+
+    // Library resources (super admin writes, anyone authenticated reads)
+    match /libraryResources/{resourceId} {
+      allow read: if isAuth();
+      allow write: if isSuperAdmin();
+    }
+  }
+}
