@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGroup } from "@/contexts/GroupContext";
-import { createGroup, addMemberToGroup } from "@/lib/firestore";
+import { createGroup } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,12 +22,6 @@ export function NoGroup() {
         profile?.displayName ?? user.displayName ?? "Unknown",
         user.photoURL
       );
-      await addMemberToGroup(gid, name.trim(), {
-        uid: user.uid,
-        displayName: profile?.displayName ?? user.displayName ?? "Unknown",
-        email: user.email ?? "",
-        photoURL: user.photoURL,
-      });
       setActiveGroupId(gid);
       refreshGroups();
     } finally {

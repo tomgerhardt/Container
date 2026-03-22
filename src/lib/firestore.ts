@@ -62,8 +62,9 @@ export async function createGroup(name: string, uid: string, displayName: string
     createdAt: serverTimestamp(),
     createdBy: uid,
   });
-  // Add creator as admin member
-  await setDoc(doc(db, "groups", groupRef.id, "members", uid), {
+  // Add creator as admin member + register in groupMemberships for context lookup
+  const batch = writeBatch(db);
+  batch.set(doc(db, "groups", groupRef.id, "members", uid), {
     uid,
     displayName,
     email: "",
@@ -71,6 +72,13 @@ export async function createGroup(name: string, uid: string, displayName: string
     role: "admin",
     joinedAt: serverTimestamp(),
   });
+  batch.set(doc(db, "groupMemberships", `${uid}_${groupRef.id}`), {
+    uid,
+    groupId: groupRef.id,
+    groupName: name,
+    joinedAt: serverTimestamp(),
+  });
+  await batch.commit();
   return groupRef.id;
 }
 

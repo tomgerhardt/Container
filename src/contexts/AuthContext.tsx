@@ -20,21 +20,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (u) => {
+    const unsub = onAuthStateChanged(auth, (u) => {
       setUser(u);
+      setLoading(false);
       if (u) {
-        await upsertUserProfile({
+        upsertUserProfile({
           uid: u.uid,
           displayName: u.displayName ?? "Unknown",
           email: u.email ?? "",
           photoURL: u.photoURL,
-        });
-        const p = await getUserProfile(u.uid);
-        setProfile(p);
+        })
+          .then(() => getUserProfile(u.uid))
+          .then((p) => setProfile(p))
+          .catch((err) => console.error("Failed to load user profile:", err));
       } else {
         setProfile(null);
       }
-      setLoading(false);
     });
     return unsub;
   }, []);
