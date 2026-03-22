@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pencil, Check, X, ExternalLink, Calendar } from "lucide-react";
+import { Pencil, Check, X, ExternalLink, MapPin, Clock } from "lucide-react";
 import { useGroup } from "@/contexts/GroupContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { updateGroupContent, subscribeToEvents } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import type { GroupEvent, SocialLink } from "@/types";
 import { format } from "date-fns";
 
@@ -18,7 +17,6 @@ export function Home() {
   const [editing, setEditing] = useState(false);
   const [nextEvent, setNextEvent] = useState<GroupEvent | null>(null);
 
-  // Editable state
   const [editName, setEditName] = useState("");
   const [editDesc, setEditDesc] = useState("");
   const [editAgreements, setEditAgreements] = useState("");
@@ -27,7 +25,6 @@ export function Home() {
 
   const isAdmin = myRole === "admin";
 
-  // Get next upcoming event
   useEffect(() => {
     if (!activeGroup) return;
     const unsub = subscribeToEvents(activeGroup.id, (events) => {
@@ -70,28 +67,59 @@ export function Home() {
 
   if (!activeGroup) return null;
 
+  const agreements = (activeGroup.agreements ?? "").split("\n").filter(Boolean);
+
   return (
-    <div className="px-4 py-4 space-y-5 max-w-2xl mx-auto">
-      {/* Next Meeting Banner */}
+    <div className="px-4 py-4 space-y-6 max-w-2xl mx-auto">
+
+      {/* Hero: Next Meeting Banner */}
       {nextEvent && (
         <button
           onClick={() => navigate(`/schedule/${nextEvent.id}`)}
-          className="w-full text-left rounded-xl bg-primary text-primary-foreground p-4 shadow-sm"
+          className="w-full text-left rounded-xl border border-border overflow-hidden relative"
+          style={{ background: "hsl(var(--secondary))" }}
         >
-          <p className="text-xs font-medium opacity-75 uppercase tracking-wide">Next Meeting</p>
-          <p className="text-2xl font-bold mt-1">
-            {format(nextEvent.date.toDate(), "EEEE, MMMM d")}
-          </p>
-          <p className="text-sm opacity-80 mt-0.5">
-            {nextEvent.time}{nextEvent.location ? ` · ${nextEvent.location}` : ""}
-          </p>
-          {!nextEvent.confirmed && (
-            <Badge variant="warning" className="mt-2 text-xs">Unconfirmed</Badge>
-          )}
+          <div
+            className="absolute inset-0 opacity-10 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(circle at 2px 2px, hsl(var(--primary)) 1px, transparent 0)",
+              backgroundSize: "24px 24px",
+            }}
+          />
+          <div className="relative p-6 flex flex-col items-center text-center gap-3">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary/70">
+              Next Gathering
+            </p>
+            <div className="flex flex-col leading-none">
+              <span className="text-3xl font-black uppercase tracking-tight text-foreground">
+                {format(nextEvent.date.toDate(), "EEEE")}
+              </span>
+              <span className="text-6xl font-black text-primary leading-none">
+                {format(nextEvent.date.toDate(), "MMM d").toUpperCase()}
+              </span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-primary/70" />
+                {nextEvent.time}
+              </span>
+              {nextEvent.location && (
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="h-4 w-4 text-primary/70" />
+                  {nextEvent.location}
+                </span>
+              )}
+            </div>
+            {!nextEvent.confirmed && (
+              <span className="text-xs font-medium text-yellow-500 border border-yellow-500/30 rounded-full px-3 py-1">
+                Unconfirmed
+              </span>
+            )}
+          </div>
         </button>
       )}
 
-      {/* Group Name + Edit */}
+      {/* Group Name */}
       <div className="flex items-center justify-between gap-2">
         {editing ? (
           <Input
@@ -100,7 +128,7 @@ export function Home() {
             className="text-xl font-bold h-auto py-1 px-2 border-dashed"
           />
         ) : (
-          <h1 className="text-xl font-bold">{activeGroup.name}</h1>
+          <h1 className="text-2xl font-bold">{activeGroup.name}</h1>
         )}
         {isAdmin && !editing && (
           <Button variant="ghost" size="icon" onClick={startEdit}>
@@ -119,43 +147,56 @@ export function Home() {
         )}
       </div>
 
-      {/* Description */}
-      <section>
-        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">About</h2>
-        {editing ? (
-          <Textarea
-            value={editDesc}
-            onChange={(e) => setEditDesc(e.target.value)}
-            placeholder="Describe your group…"
-            rows={4}
-          />
-        ) : (
-          <p className="text-sm whitespace-pre-wrap text-foreground/80">
-            {activeGroup.description || <span className="text-muted-foreground italic">No description yet.</span>}
-          </p>
-        )}
-      </section>
-
-      {/* Agreements */}
-      <section>
-        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Agreements</h2>
+      {/* Purpose / Agreements */}
+      <section className="rounded-xl border border-border p-5 space-y-4 bg-card">
+        <h2 className="text-lg font-bold flex items-center gap-2">
+          <span className="text-primary">◈</span> Our Purpose
+        </h2>
         {editing ? (
           <Textarea
             value={editAgreements}
             onChange={(e) => setEditAgreements(e.target.value)}
-            placeholder="Group agreements or guidelines…"
+            placeholder="One agreement per line…"
             rows={6}
           />
+        ) : agreements.length > 0 ? (
+          <div className="space-y-3">
+            {agreements.map((line, i) => (
+              <div key={i} className="flex gap-4 p-3 rounded-lg bg-secondary">
+                <span className="font-black text-primary/60 text-sm shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-sm text-muted-foreground leading-relaxed">{line}</p>
+              </div>
+            ))}
+          </div>
         ) : (
-          <p className="text-sm whitespace-pre-wrap text-foreground/80">
-            {activeGroup.agreements || <span className="text-muted-foreground italic">No agreements set yet.</span>}
-          </p>
+          <p className="text-sm text-muted-foreground italic">No agreements set yet.</p>
         )}
       </section>
 
-      {/* Social Links */}
-      <section>
-        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Chats & Socials</h2>
+      {/* Description */}
+      {(editing || activeGroup.description) && (
+        <section>
+          <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">About</h2>
+          {editing ? (
+            <Textarea
+              value={editDesc}
+              onChange={(e) => setEditDesc(e.target.value)}
+              placeholder="Describe your group…"
+              rows={4}
+            />
+          ) : (
+            <p className="text-sm whitespace-pre-wrap text-foreground/80">
+              {activeGroup.description}
+            </p>
+          )}
+        </section>
+      )}
+
+      {/* Social Links / Channels */}
+      <section className="rounded-xl border border-border p-5 bg-card">
+        <h2 className="text-lg font-bold mb-4">Channels</h2>
         {editing ? (
           <div className="space-y-3">
             {editLinks.map((link, i) => (
@@ -188,36 +229,31 @@ export function Home() {
               size="sm"
               onClick={() => setEditLinks((prev) => [...prev, { label: "", url: "" }])}
             >
-              + Add Link
+              + Add Channel
             </Button>
           </div>
+        ) : (activeGroup.socialLinks ?? []).length === 0 ? (
+          <p className="text-sm text-muted-foreground italic">No links added yet.</p>
         ) : (
-          <div className="flex flex-wrap gap-2">
-            {(activeGroup.socialLinks ?? []).length === 0 ? (
-              <p className="text-sm text-muted-foreground italic">No links added yet.</p>
-            ) : (
-              (activeGroup.socialLinks ?? []).map((link, i) => (
-                <a
-                  key={i}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium hover:bg-accent transition-colors"
-                >
-                  {link.label}
-                  <ExternalLink className="h-3 w-3 opacity-60" />
-                </a>
-              ))
-            )}
+          <div className="space-y-2">
+            {(activeGroup.socialLinks ?? []).map((link, i) => (
+              <a
+                key={i}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-border bg-secondary hover:border-primary/40 transition-colors"
+              >
+                <ExternalLink className="h-4 w-4 text-primary/70 shrink-0" />
+                <span className="font-medium text-sm">{link.label}</span>
+              </a>
+            ))}
           </div>
         )}
       </section>
 
-      {!activeGroup && !user && (
-        <div className="text-center py-12 text-muted-foreground">
-          <Calendar className="h-10 w-10 mx-auto mb-3 opacity-40" />
-          <p>Sign in to see your group.</p>
-        </div>
+      {!user && (
+        <p className="text-center text-sm text-muted-foreground py-8">Sign in to see your group.</p>
       )}
     </div>
   );
