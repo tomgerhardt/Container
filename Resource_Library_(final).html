@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Resource Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-4">
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">swap_horiz</span>
+</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs bg-primary-container text-on-primary-container px-2 py-1 rounded-full font-bold uppercase tracking-wider">Super Admin</span>
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full text-stone-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-20 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Search and Filter Section -->
+<section class="mb-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary transition-all" placeholder="Search articles, videos, and PDFs..." type="text"/>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-2 mt-4 overflow-x-auto hide-scrollbar">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">All Resources</button>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors">Videos</button>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors">PDF Guides</button>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors">Articles</button>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors">Worksheets</button>
+</div>
+</section>
+<!-- Bento Grid Layout for Resources -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<!-- Featured Video (Large) -->
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/50 transition-all cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500" data-alt="A diverse group of men in a workshop setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAagQtcJy2mE-vbZuhYTVoLRcvOBslfqC1Yxrf89OsHHFnaPN_2qqOZdzmftBtqHW_Z3QO91tU_t09LXaAqB-3pvPlhb5q1KWGWHUIe871prw8FVk2TkljAIYo2MdmZvHSmsKe1JfrK5C_OoidYwG1yZ_osRfdg6lipZKq3GbkDWbm2eaH8-YJ-YZp_VHnWlkeIV-7urgcBybG6qdHe32s7t3qiiTnOkFlFh8d-5uQN-vXyErKjRfr0GJ2jTcEd_N4grgE4Pin5y3w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<div class="flex items-center gap-2 mb-3">
+<span class="bg-tertiary text-on-tertiary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest">Video Masterclass</span>
+<span class="text-on-surface-variant text-xs flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 45 min</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2">Effective Leadership in Vulnerability</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 max-w-lg mb-4">A deep dive into how leading with honesty creates stronger group dynamics and trust.</p>
+<div class="flex gap-3">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">play_arrow</span> Watch Now
+                        </button>
+<button class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span> Add to Group
+                        </button>
+</div>
+</div>
+</div>
+<!-- PDF Resource -->
+<div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant/30 hover:shadow-xl transition-all group flex flex-col justify-between cursor-pointer">
+<div>
+<div class="w-12 h-12 bg-error-container rounded-xl flex items-center justify-center text-on-error-container mb-4">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface mb-2">2024 Mental Health Roadmap</h4>
+<p class="text-on-surface-variant text-xs leading-relaxed">Complete guide for establishing healthy routines and emotional check-ins.</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[10px] text-outline font-bold uppercase">12.4 MB • PDF</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+<!-- Article Resource -->
+<div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant/30 hover:shadow-xl transition-all group flex flex-col justify-between cursor-pointer">
+<div>
+<div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-on-secondary-container mb-4">
+<span class="material-symbols-outlined">article</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface mb-2">The Art of Active Listening</h4>
+<p class="text-on-surface-variant text-xs leading-relaxed">Practical techniques for group facilitators to foster open dialogue.</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-[10px] text-outline font-bold uppercase">6 min read • Article</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+<!-- More Resources (Standard Row) -->
+<div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Video Item -->
+<div class="flex items-center gap-4 bg-surface-container p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract campfire gathering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiF7k4ct3q0E6yUQ83P0gf2vzJC0SPpzpqZIxhO-ee09Q2w5j5Bh-NhZ1tPMMUaZnBsj-vjxrMK14drILX3V2fSpet9ESDzHSGg1YeSQPJI2gJ-CM4VEGB2y-R0NrlfNWz_YssRM73_IL7oCeMw1eyVT5BqiNG0xGailTytPtN_Fif9DbKkvKtgjBT4lja2ds4HpHtKJehXr1zNdwr8Yln21_0387wgGYA3wOLmUl9ZPld5RUcPaLvAv0BLYPs3SvFNPiCv9bdz4U"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/40">
+<span class="material-symbols-outlined text-white text-lg">play_circle</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-on-surface truncate">Community Stewardship 101</h5>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold mt-1">Video • 12 mins</p>
+<button class="text-xs text-primary font-bold mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span> Add to Group
+                        </button>
+</div>
+</div>
+<!-- PDF Item -->
+<div class="flex items-center gap-4 bg-surface-container p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-20 h-20 flex-shrink-0 rounded-lg bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-3xl">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-on-surface truncate">Monthly Budgeting Template</h5>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold mt-1">PDF • 2 MB</p>
+<button class="text-xs text-primary font-bold mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span> Add to Group
+                        </button>
+</div>
+</div>
+<!-- Article Item -->
+<div class="flex items-center gap-4 bg-surface-container p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-20 h-20 flex-shrink-0 rounded-lg bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">menu_book</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-on-surface truncate">Navigating Career Changes</h5>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold mt-1">Article • 10 min read</p>
+<button class="text-xs text-primary font-bold mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span> Add to Group
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 active:opacity-80" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Members</span>
+</a>
+</nav>
+<!-- Resource Detail Drawer (Simulated - hidden initially) -->
+<!-- In a real app, this would be toggled by JS. Representing the Detail state here -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-end justify-center pointer-events-none opacity-0 transition-opacity">
+<div class="bg-surface-container-low w-full max-w-2xl rounded-t-3xl p-6 transform translate-y-full transition-transform">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full mx-auto mb-6"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs text-primary font-bold uppercase tracking-widest">Video Masterclass</span>
+<h2 class="text-2xl font-bold mt-1 text-on-surface">Effective Leadership in Vulnerability</h2>
+</div>
+<button class="p-2 bg-surface-container-highest rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="aspect-video rounded-xl overflow-hidden mb-6 bg-black">
+<img class="w-full h-full object-cover" data-alt="Video preview of group discussion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbPANt7MUvUgZ20lnTRXDQbXbRxsWK32MWGfQGTwd6WkdM0dk--tSDvzZiQlVCob4Z3gaWsi0NsBxS4MOU8C1hqUcdTmbD22gmUnmeFQWnmKv3Odsm6IOzKD1hvY6hs4z8wpdMenwJo4W0b4RGb9o56xN4tq3-lcPT88DNe60kYUvQdZkA_B3RRSnSMZWPc1jrFUOnBZI6GUDpYUfvK406Gj_4XQPtkxsaiQvhGcXriBPLxOu2ZdVuoufW52ZP9FJ7m_SvRvqGLK0"/>
+</div>
+<div class="space-y-4">
+<p class="text-on-surface-variant leading-relaxed">
+                    This module explores the counter-intuitive strength found in vulnerability. Designed for group leaders, it provides actionable steps to model openness and build a safe container for emotional growth.
+                </p>
+<div class="flex items-center gap-6 text-sm text-outline border-y border-outline-variant/20 py-4">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">person</span> John Davis</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">visibility</span> 1.2k Views</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">download</span> 450 Shared</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors active:scale-95">
+<span class="material-symbols-outlined">add_to_photos</span>
+                    Add to My Group Library
+                </button>
+</div>
+</div>
+</div>
+</body></html>

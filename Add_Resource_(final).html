@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .modal-sheet-gradient {
+        background: linear-gradient(to bottom, rgba(18, 13, 8, 0.9), rgba(18, 13, 8, 1));
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen">
+<!-- TopAppBar Anchor -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-4">
+<button class="text-orange-200 hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">swap_horiz</span>
+</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<button class="text-orange-200 hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-4 max-w-2xl mx-auto">
+<!-- Background Page Content (Simplified for Context) -->
+<div class="space-y-6 opacity-40 select-none pointer-events-none">
+<h2 class="text-2xl font-headline font-bold text-primary">Resources</h2>
+<div class="grid gap-4">
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-variant rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<div class="h-4 w-32 bg-surface-variant rounded mb-2"></div>
+<div class="h-3 w-48 bg-surface-variant/50 rounded"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-variant rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<div class="h-4 w-40 bg-surface-variant rounded mb-2"></div>
+<div class="h-3 w-56 bg-surface-variant/50 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Sheet Overlay -->
+<div class="fixed inset-0 z-[60] flex items-end justify-center bg-black/60 backdrop-blur-sm">
+<!-- Bottom Sheet Content -->
+<div class="modal-sheet-gradient w-full max-w-xl rounded-t-[2rem] p-6 shadow-2xl border-t border-stone-800 transform transition-transform duration-300">
+<!-- Handle -->
+<div class="w-12 h-1.5 bg-stone-700 rounded-full mx-auto mb-8"></div>
+<header class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface">Add New Resource</h2>
+<p class="text-on-surface-variant text-sm mt-1">Share helpful content with the group members.</p>
+</div>
+<button class="bg-stone-800 p-2 rounded-full text-stone-400 hover:text-stone-100 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<form class="space-y-6">
+<!-- Title Input -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant px-1" for="title">Title</label>
+<input class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3.5 text-on-surface placeholder-stone-600 transition-all" id="title" placeholder="e.g., Weekly Reading List" type="text"/>
+</div>
+<!-- URL Input -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant px-1" for="url">URL</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500 material-symbols-outlined text-xl">link</span>
+<input class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded-xl pl-12 pr-4 py-3.5 text-on-surface placeholder-stone-600 transition-all" id="url" placeholder="https://..." type="url"/>
+</div>
+</div>
+<!-- Image Uploader -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant px-1">Cover Image</label>
+<div class="relative group cursor-pointer">
+<input class="absolute inset-0 opacity-0 cursor-pointer z-10" type="file"/>
+<div class="w-full h-40 border-2 border-dashed border-stone-800 bg-surface-container-low rounded-2xl flex flex-col items-center justify-center gap-2 group-hover:bg-surface-container transition-all group-hover:border-primary/50">
+<div class="bg-surface-container-high p-3 rounded-full text-primary shadow-inner">
+<span class="material-symbols-outlined text-2xl">add_a_photo</span>
+</div>
+<div class="text-center">
+<span class="text-sm text-on-surface font-medium block">Click to upload image</span>
+<span class="text-xs text-on-surface-variant">JPG, PNG or WEBP (Max 5MB)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4 pb-2">
+<button class="w-full bg-primary text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                        Add Resource
+                    </button>
+</div>
+</form>
+</div>
+</div>
+<!-- BottomNavBar Anchor -->
+<nav class="bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span>Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span>Members</span>
+</a>
+</nav>
+</body></html>

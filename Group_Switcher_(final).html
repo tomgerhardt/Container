@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Switcher &amp; Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Epilogue', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-950 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16 font-epilogue antialiased">
+<div class="flex items-center gap-3">
+<button class="text-orange-200 hover:bg-stone-800 transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<button class="text-stone-400 hover:bg-stone-800 transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-2xl mx-auto">
+<!-- Section: Search & Filter -->
+<div class="mb-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container border-none rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-primary placeholder:text-outline-variant" placeholder="Search your groups..." type="text"/>
+</div>
+</div>
+<!-- Section: Active Group -->
+<div class="mb-10">
+<h2 class="text-xs font-bold uppercase tracking-widest text-primary-dim mb-4 ml-1">Current Focus</h2>
+<div class="bg-surface-container-high p-5 rounded-xl border border-primary-container shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-on-surface">Men's Group</h3>
+<p class="text-sm text-on-surface-variant">Active Workspace • 12 Members</p>
+</div>
+</div>
+<div class="h-3 w-3 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+<!-- Section: Group List (Bento-ish Grid) -->
+<div class="space-y-4">
+<h2 class="text-xs font-bold uppercase tracking-widest text-outline mb-4 ml-1">Your Communities</h2>
+<!-- Group Item 1 -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/30 hover:border-primary-dim transition-all group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-dim transition-colors" data-icon="fitness_center">fitness_center</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Iron Sharpens Iron</h4>
+<p class="text-xs text-on-surface-variant">Morning Workout Crew</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-primary-dim font-bold text-xs px-4 py-2 rounded-lg hover:bg-primary-dim hover:text-on-primary-container transition-all active:scale-95">
+                        Switch
+                    </button>
+</div>
+</div>
+<!-- Group Item 2 -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/30 hover:border-primary-dim transition-all group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-dim transition-colors" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Wisdom Seekers</h4>
+<p class="text-xs text-on-surface-variant">Monthly Book Review</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-primary-dim font-bold text-xs px-4 py-2 rounded-lg hover:bg-primary-dim hover:text-on-primary-container transition-all active:scale-95">
+                        Switch
+                    </button>
+</div>
+</div>
+<!-- Group Item 3 -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/30 hover:border-primary-dim transition-all group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-dim transition-colors" data-icon="mountain_flag">mountain_flag</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Summit Leaders</h4>
+<p class="text-xs text-on-surface-variant">Strategic Growth Hub</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-primary-dim font-bold text-xs px-4 py-2 rounded-lg hover:bg-primary-dim hover:text-on-primary-container transition-all active:scale-95">
+                        Switch
+                    </button>
+</div>
+</div>
+</div>
+<!-- Section: Actions -->
+<div class="mt-12 grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-3 p-6 bg-surface-container-low border border-dashed border-outline-variant rounded-2xl hover:bg-surface-variant hover:border-primary-dim transition-all group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<span class="font-bold text-sm text-on-surface">Start New Group</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-3 p-6 bg-surface-container-low border border-dashed border-outline-variant rounded-2xl hover:bg-surface-variant hover:border-tertiary transition-all group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined text-tertiary-dim" data-icon="nest_eco_leaf" style="font-variation-settings: 'FILL' 1;">nest_eco_leaf</span>
+</div>
+<span class="font-bold text-sm text-on-surface">Seed New Group</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-stone-950 border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2 font-epilogue text-xs font-medium">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="mt-1">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="mt-1">Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 transition-all tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="mt-1">Members</span>
+</a>
+</nav>
+<!-- NavigationDrawer (Off-screen / Simulated) -->
+<aside class="hidden fixed top-0 left-0 h-full w-80 bg-stone-900 shadow-2xl z-[60] flex flex-col py-6 divide-y divide-stone-800 font-epilogue rounded-r-2xl">
+<div class="px-6 pb-6">
+<div class="flex items-center gap-4">
+<img alt="User Profile" class="w-12 h-12 rounded-full bg-stone-800" data-alt="Avatar placeholder for user profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9GNQRKxWJspFtc2qOX1BybEKcnPXZEVicKW0jERSrlFp5pYEzv8ppH5Uc0zpPNa_HnQ-Q6oSMX2rnbhEJcosePDSUrRm5O9bxFEVZaCjyacb_UE9wCDHGMRdDgLpqtX6tRZQiSvnHiX5gqa1cNm8sm96y0PMea_Ivo64Hd1bsHt9lYH8WILyyuvrNcWEKPaqCFpagIzel_VHQ1ws9l0jiRjKz-TRhHaCK1UEz3MseutymPcPB1UphlOkRM88a5PFdlklzU9Zk9mg"/>
+<div>
+<h2 class="text-stone-100 font-black text-xl">Member Name</h2>
+<p class="text-stone-400 text-sm">Group Leader</p>
+</div>
+</div>
+</div>
+<div class="flex-1 py-4">
+<nav class="space-y-1 px-3">
+<a class="flex items-center gap-4 px-4 py-3 text-stone-400 hover:bg-stone-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-stone-800 text-orange-200 font-semibold rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-400 hover:bg-stone-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-400 hover:bg-stone-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+</nav>
+</div>
+<div class="px-3 pt-4">
+<a class="flex items-center gap-4 px-4 py-3 text-error-dim hover:bg-error-container/20 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+</body></html>

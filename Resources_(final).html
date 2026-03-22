@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resources - Men's Group</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Epilogue', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-stone-950 text-on-surface antialiased min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-200 cursor-pointer p-2 hover:bg-stone-800 transition-colors rounded-full active:scale-95 duration-150">swap_horiz</span>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-stone-400 cursor-pointer p-2 hover:bg-stone-800 transition-colors rounded-full active:scale-95 duration-150">menu</span>
+</div>
+</header>
+<main class="pt-20 px-4 max-w-5xl mx-auto">
+<!-- Action Header -->
+<div class="flex items-center justify-between mb-8 mt-4">
+<h2 class="text-2xl font-bold text-primary font-headline tracking-tight">Resources</h2>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-orange-200 px-4 py-2 rounded-lg transition-colors text-sm font-medium border border-stone-700 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm">library_add</span>
+                    Add from Library
+                </button>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg transition-colors text-sm font-bold active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New
+                </button>
+</div>
+</div>
+<!-- Pinned Resources (Bento Style) -->
+<section class="mb-10">
+<div class="flex items-center gap-2 mb-4 text-stone-400 text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">keep</span>
+                Pinned Resources
+            </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl h-64 border border-stone-800 hover:border-primary/50 transition-all cursor-pointer shadow-lg">
+<img alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A tranquil mountain landscape at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANs1ySeAHs2Id5rckx4iB9wbFMSqM0HqUVZQZb6rtpk2tC7zuROCJV7G9eVdK1FYAe_ulZThc24Lc9VL4zDsLF9JeoRwH9G3H4yxnRnExwUMvSJKeYqeVPuY8Fp1ziqNTbIXlMdBBkE4etaER2I9KWtR8GmjjtVVE7oOLO9P_k9y2hnog0m8LBdgpizvbihwUg3ARo3IAom4dLvWv6efqkfbR5zyyeTWPZnWzegIvdZo8jZqCqZUoo4qjljRF_V2dfCe6GytllTpQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="bg-primary/20 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-2 inline-block border border-primary/30">Masterclass</span>
+<h3 class="text-2xl font-bold text-white leading-tight">Leadership Foundations: Guiding Others with Integrity</h3>
+</div>
+</div>
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl h-64 border border-stone-800 hover:border-primary/50 transition-all cursor-pointer shadow-lg">
+<img alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Team members discussing around a table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd3NHsPDaV-21AdiizwayJ-sijT6O25E-5ZOJ3rVFcLBHB1cFCF_pm3D48GU5we9hB5sdh7o9Sz99UWktRzgy6LvTiDD28mm9Is6caIv6FVVdUi-PCjs6n944BkaBznVhYlNaX0Wyp2SoREyUMkyysiXsp4HIGVayWIYmyy2UEsAjQkLBeLF0QfFIYd-tkLRf5C0Z3O1Ea_UhiYdmo8Jta03i-bFAwsrzT-CD2oaLCIZI6w9ZWMea0HkYHgOJG4kZadXTWDqM9tgo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="bg-tertiary/20 text-tertiary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-2 inline-block border border-tertiary/30">Workshop</span>
+<h3 class="text-xl font-bold text-white leading-tight">Effective Communication in Conflict</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Chronological List -->
+<section>
+<div class="flex items-center gap-2 mb-4 text-stone-400 text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">history</span>
+                All Resources
+            </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Item 1 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Old leather bound journal and pen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcRWRmhNijYIG5j8fYurfACNVH7jjLfZCsdR15xCgC22Niacw7lXSYNUS63WBDKSuhA0u1xs8Jg33P--efL8vTpZEhzPbvik2i_zFc3GMVEca4Gla2fMVZgWB8vBQm2I6KnJt_HD7LuFVv4d2b0kkDFXr7zQPCgVSla1NXKjTEz7PeGmMU05hmoRP_Qgtj6s5CHXMOlMzGx929w4txylgts-AKWtaDSzoVY6cBnvuFHBkGwSiMRuvl6SodJYu028GVqgcRe3X5lDI"/>
+<div class="absolute top-2 right-2 bg-stone-950/80 backdrop-blur-md p-1 rounded-full text-orange-200">
+<span class="material-symbols-outlined text-base">bookmark</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">The Daily Journaling Framework for Clarity</h4>
+<p class="text-stone-500 text-sm">Article • 8 min read</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Dumbbells on a gym floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFXRr-O5_EwWhjehhGwf7i9GsdJ6w8orC-bBRcVGhPisay7jzqj-wMPCX7xIu8S2oSdanw39hWows35uNP9gb7VsDmfQDbxHgo6jX1YuckhaKgcgbicbErza525pTHN7Cp-XK4uZImxAwM1mKmzBMJHG-Ds3qnbFAfMHDE-5nDkFn1YCqIMENevAzffPeUeDYBWDA_oYdqLu70U18560hDxDfnWFpo3uP1IrPjx5hXKy0nYy93zqVWt1HT4oM7UBf7evIQ9eDnNlA"/>
+<div class="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">Physical Discipline &amp; Mental Resilience</h4>
+<p class="text-stone-500 text-sm">Video • 14:22</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Person standing on a rock looking at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3hQQFRF-HMpggeGiXK2mcFDfgSoKPGBO5L4YGzxhnzAv-UtFDkE0pMmD1W8lEM5OlE1LCq9AHMfptsEEsVtc8HpTqMJx2-pjGzKXWxOyw_VF8CJcUCYwv9QtI7b2c4WCrSdUVRAhpkX9t3N3OdiA0ScEccmW9Jcf1WFnIaO3sYtf8C7gcQjCfX1Vl3XCldfrynkbMdOaGmfkRY5l2fhw_Vlu6ZT79_yOr0lQvnel__kVCRMogOit4o0XWI6UOiKOhcXWHkT8f_wY"/>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">Finding Purpose in the Middle Years</h4>
+<p class="text-stone-500 text-sm">Podcast • 32 min</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern workspace with laptop and coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB62GUHSPDAA3tLpgb7oRGeH7pAv8YDKzDlIQbmjRsQj13TdrS7r3mXu6U37xMm_x6VGrzOLumrB-w6rYJCw7AxnPvXYSStsRLOdNeb9l_ZfjpE0oou7j5fS9jYlVtPaQl33aVa7hm5Px1joJmKyKUoxtGd8tE5KXIqGW1LURBypPqUIjoWCeMdRpweHpROHdTEBRRBIGTJyQbpJvspFvRHKh4AIyMxjyCvtAl6OKdBKU8oxmqEoUvCzPlo835ADXH_6BOVUe53NE8"/>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">Career Pivot Strategies for 2024</h4>
+<p class="text-stone-500 text-sm">PDF Guide • 12 pages</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Father and son playing in park" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpkGvcJ0f9l9b2jdKVXzri0PEJb2WooDsZNACFszvtySSjOtbBHzQ8XHqGmnm_vLCRZn20OoDaMGlvTLMkY6wJ0tg9egjg-2byGWu14-XYyNMs8UOmrJPBGBIA_Cv5iqzf9VyxYe4YOk9JLyo3rjsSuU465IBnnynd-uL7Kdc2H0UbSDEh53g9v_BoMzCyVTxNbBoRk3xKte_uq0gcv3F-5_I4WmQb3fUhEbNgPvl6VQ-OWqn_kzsW5An2IebRobrAjnq4dNbCJXY"/>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">The Intentional Father: Shared Wisdom</h4>
+<p class="text-stone-500 text-sm">Curated Collection</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="group bg-stone-900 border border-stone-800 rounded-xl overflow-hidden hover:bg-stone-800/50 transition-all cursor-pointer active:scale-98 duration-150">
+<div class="aspect-video overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Meditation space with cushions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpq45tsWgsxSsUuOlQBBcN8YyzKX_Mgliz8rC15mc7MtehS-mvXYy2tZR4RrUgBXzx3KSWWJjTrGt2D2cvsrxLRJZ69Bm9NM04jkwVp9B7Y-8UyfyAOkeDtZF7oQbbeFj7_mOYuoyNq6xk02HzI-5sKoT2LTY3kAiBD9wtQfAuw4MhzWOGVz8wPxthcGBjmLmI9jJJXKKuJMbCMiH05emPk7qut75JDOyCm87loq1Gk2cIZJtyADN86j6_waZaEn0yz-sxm5D8I-Y"/>
+</div>
+<div class="p-4">
+<h4 class="text-stone-100 font-bold text-lg mb-1 leading-snug">Mindfulness for High-Performance Men</h4>
+<p class="text-stone-500 text-sm">Audio Course • 6 Modules</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Load More / Empty State Spacer -->
+<div class="py-12 flex justify-center">
+<button class="text-stone-500 font-medium text-sm hover:text-orange-200 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+                View older resources
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+            Schedule
+        </a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+            Resources
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+            Members
+        </a>
+</nav>
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Details - Men's Group</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #120d08;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(149, 112, 66, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(162, 105, 83, 0.1) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<main class="pt-24 px-4 max-w-2xl mx-auto bg-mesh">
+<!-- Date Header -->
+<section class="mb-8">
+<div class="flex flex-col items-start">
+<span class="text-primary font-bold tracking-widest text-sm uppercase mb-1">Upcoming Event</span>
+<h2 class="font-headline text-6xl font-black text-on-background leading-none">October 13th</h2>
+<div class="mt-4 flex flex-wrap gap-4">
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="text-on-surface text-lg font-semibold">7:00 PM - 9:30 PM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Card -->
+<section class="mb-8">
+<a class="block group" href="https://maps.google.com" target="_blank">
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant hover:border-primary transition-all duration-300 shadow-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="flex items-start justify-between">
+<div class="flex-1">
+<h3 class="text-on-surface-variant text-sm font-medium mb-1">Location</h3>
+<p class="text-on-surface text-xl font-bold leading-tight">The Heritage Clubhouse</p>
+<p class="text-on-surface-variant mt-1">482 Oak Valley Dr, Portland, OR</p>
+</div>
+<div class="bg-primary-container text-on-primary-container p-3 rounded-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+</div>
+<div class="mt-4 overflow-hidden rounded-lg h-32 border border-outline-variant/30">
+<img alt="Map Location" class="w-full h-full object-cover filter contrast-125 grayscale opacity-70 group-hover:opacity-100 transition-opacity" data-alt="Stylized dark map showing the venue location in Portland" data-location="Portland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgUUnuOmxN15YoTRxU9tjurPV8TEkz0-1tOrwk75Mqx2DrTnRFivIKtZtUNMBdgc3YlNVp5pjpg1HP7eGI20yK8UCbjVMkma8zBTFE7i64xvSWyhIzSIGHnHWT6bO6KUxzjv9x1tkx4FpitxvsZuIQlq5Q6BIjHsixAnp0St8D74L6rnn8lfGl6_iwejVRKBq7zL_Ep13IwzEjooxfu69SR6D9cOXamV63YW4x1WLxiOYPrcYitI0qEPfizq2cJK6XnMgqhTw0TNU"/>
+</div>
+</div>
+</a>
+</section>
+<!-- Admin Control -->
+<section class="mb-8">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<div>
+<p class="text-on-surface font-semibold text-sm">Event Status</p>
+<p class="text-on-surface-variant text-xs">Admin only control</p>
+</div>
+</div>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-primary text-on-primary shadow-sm">Confirmed</button>
+<button class="px-4 py-1.5 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface transition-colors">Pending</button>
+</div>
+</div>
+</section>
+<!-- RSVP & Notes Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+<!-- RSVP Actions -->
+<div class="bg-surface-container-high rounded-xl p-6 border border-outline-variant flex flex-col justify-between">
+<h3 class="text-on-surface font-bold text-lg mb-4">Will you be there?</h3>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-primary-container text-on-primary-container border border-primary/30 active:scale-95 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-bold">Yes</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container border border-outline-variant hover:border-outline transition-all active:scale-95">
+<span class="material-symbols-outlined mb-1 text-on-surface-variant" data-icon="help">help</span>
+<span class="text-xs font-bold text-on-surface-variant">Maybe</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container border border-outline-variant hover:border-outline transition-all active:scale-95">
+<span class="material-symbols-outlined mb-1 text-on-surface-variant" data-icon="cancel">cancel</span>
+<span class="text-xs font-bold text-on-surface-variant">No</span>
+</button>
+</div>
+</div>
+<!-- Optional Note -->
+<div class="bg-surface-container-high rounded-xl p-6 border border-outline-variant">
+<h3 class="text-on-surface font-bold text-lg mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit_note">edit_note</span>
+                    Add a Note
+                </h3>
+<textarea class="w-full bg-surface-container-lowest border-outline-variant rounded-lg text-sm text-on-surface focus:ring-primary focus:border-primary placeholder:text-on-surface-variant/40" placeholder="Dietary needs, running late, or items you're bringing..." rows="3"></textarea>
+<button class="mt-3 w-full py-2 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-lg hover:bg-secondary transition-colors">Save Response</button>
+</div>
+</section>
+<!-- Attendance Preview -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-on-surface font-bold">Members Attending</h3>
+<span class="text-primary text-sm font-bold">14 Confirmed</span>
+</div>
+<div class="flex -space-x-3 overflow-hidden">
+<img alt="Member" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Portrait of a smiling man in casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHY-Ph6FUZD8DR_IG8am0WjZyhswRwaYiJDzlQsQSo-X-bI73hHOFoytibHlcsWU4cU9w9LIUcVQM2W1lAF294hETDB33GNOnd6nyAq7HaTWNe0KYAVf8xPHtx_90o_gVrXDB_v-Z1mofLcBtuWfLGN2JOb7cBu7jpGL8eHbfUtKw6nujLHhWHgqxrlIi9HH9gyepToq3ofShM_FSAgnL4RV1j2eqwJ87ZXh7ImGNvhDZhsYKnDtW4pxfLfIhrO07XwdckwzoNR88"/>
+<img alt="Member" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Portrait of a professional man wearing glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgiVyl4uIMz5JDJyc__Ypvv7a1Vp9DIqG60vRAZ6ZtCTX5IU70lVCVSLlwGgiFKfWaMa9g0Expxv0FPmd1t_ghlX5UukKBN8T3fHs1DK-pxeIHHxsut7fR1OEXE7fQ7Uhxh6_Bg583GoPWUXd3wf0VAZBsSlct5BEIrQrKI_vJbNTBVURda7XR-v_3mzN8A_RlXn4kj_80-3Y46c17lHidYuzQPFOJcbhnfutgN3KLqU172nwqsH0jQ8pcRDpRHFV1-k83A_IIdBM"/>
+<img alt="Member" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Portrait of a young man with beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWDlzCXMhAEfthvzCu6eik-ep5YGbLk-P6xHA06Eo1EIGNACirkKHi2rH0hezMp_Ub5LfRX15hp3egDvpLTemg664CJ9xlf9X5FdmvH1xU34-ZnTfYsOSfLFqBT2QtQJFkXbo6a-v3W9vEnC7430WJlUMUqOxqMqE99wAhzPolzWuCRsCm8CYSNbGxXvEeEBCyzZFzKSPZzIKcobocPfUxVYZ2KVNSDmrx8wiPkHO7NViSwFqUj9UdumDQXPZuGZpgDZA2KY9uANA"/>
+<img alt="Member" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Close up portrait of a middle aged man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB30eBlWIMFNLgzKoh0aOdCdfqOyd9H_dpFBWp2PgHwjQN4Ei6WT1sSTgpHprdDA0_y4KrVaGUHTFT0TOeBZO_gD0QzuC6FA24EABPs3eb8SNP9EHLcvz97WVbR3pifG61lBvYaKKKcYxlhWjda_fbWKJtttmrdgsqDaEstQhkMuBLG3aU5vIPKSz7fY7ByoIBEXQWIxUdPVaOoUBT2EmMrso_iaTaasSVg8J3CiS2KdHN_wxvd_Oj6dGRtQ-_fIfREr3eLyMyBjgk"/>
+<div class="flex items-center justify-center h-10 w-10 rounded-full ring-2 ring-background bg-surface-container-highest text-[10px] font-bold text-on-surface">+10</div>
+</div>
+</section>
+</main>
+<!-- Navigation Shell Support (BottomNavBar) -->
+<nav class="bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Members</span>
+</a>
+</nav>
+</body></html>

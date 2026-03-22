@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Members - Men's Group</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Epilogue', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined hover:bg-stone-800 transition-colors p-2 rounded-full active:scale-95 duration-150" data-icon="swap_horiz">swap_horiz</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<button class="material-symbols-outlined hover:bg-stone-800 transition-colors p-2 rounded-full active:scale-95 duration-150" data-icon="menu">menu</button>
+</header>
+<main class="pt-24 px-4 max-w-2xl mx-auto">
+<!-- Header Section with Admin Action -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Members</h2>
+<p class="text-on-surface-variant text-sm">32 active brothers</p>
+</div>
+<button class="bg-primary text-on-primary font-semibold px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+<span class="text-sm">Invite Member</span>
+</button>
+</div>
+<!-- Members Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<!-- Member Card 1 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Close up portrait of a middle aged man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyWHV-Ltq-iEt4dI7ekoLiMzj7bcjzjmUJ1an_4FeTOAfQMh7CFlXcB_B2HhcUpQjeXbswJp3nivCZa-b5ohTaD2hJSwKt5JWFzY-yLhRFfro3yBZEm_O4YVVRwG8-4_uoUuMpi59ubWJLTI6weWbKm7UrAtkbpJ9iAGECuztZLq2b99duhpugoKDdRv043nXTE9U9RA8EGmZhG2JUN3Nzbtj2FoBXS7UmVh_kweK1sjKZ96El3w6EnOyATzNIvClVeAJhvpjshwM"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-surface-container rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">Marcus Thompson</div>
+<div class="text-on-surface-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+                        Group Leader
+                    </div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Member Card 2 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Portrait of a young man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYormzBoy-jZuza9lw020I1mUmMlxHHZAUmdoWfra50ZeBZCgjKZp7wlmqjHKkEBN5Z9xf5pikC8mH7bViHQJGzQSx7ZksUuZdbMRTFrq79XLJZiHyfMwg2qCEU-dU__MkrRXz-Dy_tClEZcSMLKrgXGoEVVyAfzVPTbPtcDV1n4XPkl9L-1cwIIKgvLTuh_5qiyarClaKXRZg2_rihW2FUn1lt5YPHlNIjKYzmkJzc9OBvthOC4TToHsyPPv68Ef8zjvLyW9XXHA"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-surface-container rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">David Chen</div>
+<div class="text-on-surface-variant text-xs">Contributor</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Member Card 3 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Smiling bearded man looking away" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbd1Gba8KBz-BDlEot8tXQqkZinAXqTPz8dIRsD31zhm0wVjEjx0CijRm_yA9GuGazVqf63qEw-axD9FRa248mzwYHEOUNzDgd7RagP0D3mvhn-kDVsL68EcK0gl4BcItuFyZK0JCDP90gMxDY5aX4VeL5HY2mfOltFYSTVDRQfm0oIB-bq5qKGwJwparqLiiqq2gp1P7SS2_ohlzN0uzIXBucZFpx12EBkU-WSbiwDJauujANGlAYHepkKqnsh85iAYbdeKtBiPo"/>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">James O'Brien</div>
+<div class="text-on-surface-variant text-xs">Member</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Member Card 4 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Confident man in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJflJhe6GB3dzjno4R4t-ItuOUEsVnLLYAJLf8a0avrgYkCOCo_XJHSgG3hTvgj71aSojpJmsDOjlMZBUErnMu-Phq8NS9zhpPcRmCAg63KQyswKvUxrHO8FewhIFltBvgBT3QrhhcDRoAr_uJEm7ZZtivEm01ZjfTFPx8QTK-C4_ak9GQvHtWS59nhGmhR_jjw-4wU896SHpyJQfSs1YDj2QhjZyeQluhQJY_w0paEG5_Z8W13vam8Mh98DrtGf6AsTgER85cVbg"/>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">Robert Vance</div>
+<div class="text-on-surface-variant text-xs">Admin</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Member Card 5 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Thoughtful looking man with serious expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4iiqan5ZD2KjuBBsTcLRWOO9XZxBlzo7fcfTlnmLwwGPNfldOq-P_PH9jYN01B4PLjsZQgcIFxSc3T5UvJIXRS08YhTeBDdynDZat5zOAx6YbcQnkPIqc2MtGvKNOqhrihlevB77LxGO7OirLWcY1A5QxIMPW_naidVLixyadhXaJ25TI1NUZe4I86XVimKl96Ja64EBkYYsT5ItvGU1_tFKXiedrUcY9pqYVan705lpj0zCueKMfieo8i2O3MLKeWuQA0EC3PBA"/>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">Elias Thorne</div>
+<div class="text-on-surface-variant text-xs">Member</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Member Card 6 -->
+<button class="bg-surface-container hover:bg-surface-container-high border border-outline-variant p-4 rounded-xl flex items-center gap-4 text-left transition-all active:scale-[0.98] group">
+<div class="relative">
+<img alt="Member Avatar" class="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Profile of a man with sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvdB4ht3S3u35LNPGetNC-9nvQmy7hG-Dbkw5S7xUPaHUu9g1Amd7EPWUe47YsP-MpvOVBgUUH0dc-hukfbw6FfsS9kF5c80SDCv96T2C3hxZRWhtPAMBlrYCmuXijHRpX8cYdSdF-3erKmLnW6JMFCDdEr0ulbYb3f4-QPEevhWwOxV6PHxGCxbYllH2GM7cuWqxMDwwRFUPgASUvqXC5RkxUWnVfwWePJGwUrD5nh4PW9cBXmbsubb17IYeIHlzOiMJGvVY65rw"/>
+</div>
+<div class="flex-1">
+<div class="text-on-surface font-bold leading-tight">Nathan Blackwood</div>
+<div class="text-on-surface-variant text-xs">Contributor</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Search / Filter FAB (Contextual) -->
+<button class="fixed bottom-24 right-6 bg-tertiary-container text-on-tertiary-container p-4 rounded-2xl shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span>Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 tap-highlight-transparent active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>Members</span>
+</a>
+</nav>
+</body></html>

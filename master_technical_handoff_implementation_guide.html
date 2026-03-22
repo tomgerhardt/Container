@@ -1,0 +1,63 @@
+# Master Technical Handoff & Implementation Guide: Men's Groups Web App
+
+This document serves as the single source of truth for building the Men's Groups mobile-first web app. It combines design requirements, technical specifications, and a direct mapping to the final HTML/CSS screen designs.
+
+---
+
+## 1. Project Overview & Creative North Star
+A mobile-first web application designed to help "men's groups" organize meetings, share resources, and manage membership. 
+**Creative North Star:** "The Modern Forge" – A sophisticated, grounded, and high-contrast dark aesthetic that feels intentional and robust.
+
+---
+
+## 2. Core Technical Stack
+*   **Frontend:** Next.js (React) or React.
+*   **Styling:** Tailwind CSS (Utility-first styling).
+*   **Authentication:** Google OAuth.
+*   **Backend/Database:** Firebase (Firestore) or Supabase (Real-time updates for RSVPs and data).
+*   **Social Integration:** Deep-linking to Signal/WhatsApp for group communication (no in-app chat).
+*   **Deployment:** Vercel or Firebase Hosting.
+
+---
+
+## 3. Global Design Tokens (Theme: "My Design System")
+Apply these consistently across the application for visual harmony.
+
+*   **Color Palette:**
+    *   **Background (Primary):** `#1A1612` (Deep Obsidian Brown)
+    *   **Surface/Cards:** `#261F18` (Elevation contrast)
+    *   **Accent (Primary):** `#382916` (Warm Wood tone for CTAs/Pills)
+    *   **Text (Primary):** `#F9F9FF` (Off-white for high readability)
+    *   **Text (Muted):** `#A3A3A3` (Secondary information)
+*   **Typography:**
+    *   **Headings:** Epilogue (Bold/ExtraBold)
+    *   **Body:** Inter or System Sans-Serif
+*   **Layout:**
+    *   **Roundness:** 8px (`rounded-lg` in Tailwind)
+    *   **Navigation:** Persistent TopAppBar and BottomNavBar across all non-modal views.
+
+---
+
+## 4. Feature-to-Screen Mapping (Implementation Guide)
+
+Use the following mapping to identify the correct HTML/CSS structure for each part of the app. Access the code via the **"</> View Code"** button on the corresponding screen in the Canvas.
+
+| Feature Area | Screen Name (Final) | Placeholder ID | Key Implementation Notes |
+| :--- | :--- | :--- | :--- |
+| **Main Dashboard** | Home (Final) | {{DATA:SCREEN:SCREEN_7}} | Large date/day banner. RSVP quick-action. External chat links. |
+| **Meeting List** | Schedule (Final) | {{DATA:SCREEN:SCREEN_8}} | Chronological events. Cadence summary at top. "Confirmed" pills. |
+| **RSVP & Details** | Event Detail (Final) | {{DATA:SCREEN:SCREEN_3}} | Detailed map link, RSVP segmented control, and text note input. |
+| **Resource Hub** | Resources (Final) | {{DATA:SCREEN:SCREEN_47}} | Continuous list (no date headers). Pinned items at top. |
+| **Roster** | Members (Final) | {{DATA:SCREEN:SCREEN_22}} | Simple cards. Tap to view profile. Role badges (Founder/Admin). |
+| **Admin: Schedule** | Cadence Editor (Final) | {{DATA:SCREEN:SCREEN_17}} | Logic for recurring events (Weekly/Monthly). "Qty Ahead" generation. |
+| **Admin: Content** | Add Resource (Final) | {{DATA:SCREEN:SCREEN_55}} | Modal sheet for custom URL/Title/Image entry. |
+| **Global Content** | Resource Library (Final) | {{DATA:SCREEN:SCREEN_46}} | Super-admin repository. "Add to Group" copies data to local group. |
+| **Navigation Shell** | Group Switcher (Final) | {{DATA:SCREEN:SCREEN_42}} | Persistent Top/Bottom bars and group switching logic. |
+
+---
+
+## 5. Developer Implementation Notes
+1.  **Resource Copying:** When an admin adds a resource from the "Global Library," the backend should *copy* the record into that group's specific `resources` collection rather than just linking to it.
+2.  **Persistent Navigation:** Implement the TopAppBar and BottomNavBar as global layout components that persist across page transitions.
+3.  **Real-time RSVPs:** Use real-time listeners (Firestore/Supabase) to ensure attendance counts update instantly for all users.
+4.  **Admin Controls:** Toggle visibility of edit buttons (pencil icons, cadence edit, etc.) based on the user's role (Admin/Super Admin).

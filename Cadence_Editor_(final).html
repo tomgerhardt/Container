@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Cadence Edit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#ffccba",
+              "surface-bright": "#342a1f",
+              "surface-tint": "#ebbf89",
+              "secondary-dim": "#d0b495",
+              "background": "#120d08",
+              "on-primary-fixed-variant": "#6c4c21",
+              "error": "#f97758",
+              "on-tertiary": "#6f3e2b",
+              "inverse-on-surface": "#5b544c",
+              "primary-container": "#6c4c21",
+              "on-error-container": "#ff9b82",
+              "secondary": "#dec2a2",
+              "error-dim": "#c44f34",
+              "on-tertiary-container": "#643523",
+              "error-container": "#85230a",
+              "on-tertiary-fixed": "#4c2211",
+              "on-secondary-fixed": "#4f3c24",
+              "tertiary-dim": "#efac92",
+              "secondary-fixed": "#fcdebc",
+              "secondary-container": "#4b3821",
+              "tertiary-fixed-dim": "#efac92",
+              "on-primary": "#573a11",
+              "primary-fixed-dim": "#ebbf89",
+              "surface-container-high": "#261e15",
+              "primary-dim": "#dcb17d",
+              "outline": "#817365",
+              "secondary-fixed-dim": "#edd0af",
+              "surface-dim": "#120d08",
+              "on-secondary-container": "#d7bb9b",
+              "outline-variant": "#514639",
+              "on-secondary": "#503d25",
+              "on-primary-container": "#ffdeb8",
+              "tertiary-container": "#ffb99f",
+              "surface-variant": "#2d2419",
+              "on-error": "#450900",
+              "on-tertiary-fixed-variant": "#6f3e2b",
+              "primary-fixed": "#facd96",
+              "on-background": "#f4e3d1",
+              "inverse-primary": "#7a592c",
+              "surface-container-low": "#18120b",
+              "on-primary-fixed": "#4c3007",
+              "inverse-surface": "#fff8f4",
+              "primary": "#ebbf89",
+              "on-surface": "#f4e3d1",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#ffb99f",
+              "surface-container-highest": "#2d2419",
+              "surface": "#120d08",
+              "on-secondary-fixed-variant": "#6d583e",
+              "surface-container": "#1f1810",
+              "on-surface-variant": "#b8a999"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Epilogue"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Epilogue', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-stone-950 text-orange-200 font-epilogue antialiased fixed top-0 w-full z-50 border-b border-stone-800 shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-4">
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">swap_horiz</span>
+</button>
+<h1 class="text-lg font-bold text-stone-100">Men's Group</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-stone-500 hidden md:block">ADMIN PANEL</span>
+<button class="hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-4 max-w-4xl mx-auto">
+<!-- Warning Banner -->
+<div class="mt-4 mb-8 p-4 bg-error-container text-on-error-container rounded-xl border border-error/20 flex gap-4 items-start shadow-lg">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<p class="text-sm font-medium leading-relaxed">
+                Editing cadence will delete unconfirmed future events; confirmed events will remain unchanged.
+            </p>
+</div>
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-primary tracking-tight">Recurrence Logic</h2>
+<p class="text-on-surface-variant mt-2">Define the rhythmic schedule for your group meetings.</p>
+</div>
+<!-- Editor Canvas: Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Frequency and Interval (Main Logic) -->
+<div class="md:col-span-8 bg-surface-container rounded-xl p-6 border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">event_repeat</span>
+<h3 class="text-lg font-semibold text-on-surface">Cadence Settings</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-sm font-label text-on-surface-variant">Frequency</label>
+<select class="w-full bg-surface-container-high border-outline-variant text-on-surface rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none">
+<option>Weekly</option>
+<option>Bi-Weekly</option>
+<option>Monthly</option>
+<option>Quarterly</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-label text-on-surface-variant">Interval</label>
+<div class="flex items-center bg-surface-container-high border border-outline-variant rounded-lg px-4 py-3">
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface p-0" type="number" value="1"/>
+<span class="text-xs text-on-surface-variant ml-2">weeks</span>
+</div>
+</div>
+<div class="sm:col-span-2 space-y-4">
+<label class="block text-sm font-label text-on-surface-variant">Repeat On</label>
+<div class="flex flex-wrap gap-2">
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">M</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">T</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold">W</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">T</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">F</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">S</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface hover:bg-primary-container transition-colors font-bold border border-outline-variant">S</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuration Meta -->
+<div class="md:col-span-4 space-y-6">
+<!-- Start Date -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/30">
+<label class="block text-sm font-label text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                        Effective Start
+                    </label>
+<input class="w-full bg-surface-container-high border-outline-variant text-on-surface rounded-lg px-4 py-3 focus:ring-primary focus:border-primary" type="date" value="2024-06-01"/>
+</div>
+<!-- Qty Ahead -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/30">
+<label class="block text-sm font-label text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">auto_graph</span>
+                        Qty Ahead
+                    </label>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-bold text-primary">12</span>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-primary transition-colors border border-outline-variant">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-primary transition-colors border border-outline-variant">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-4 leading-tight uppercase tracking-wider">Events pre-generated in calendar</p>
+</div>
+</div>
+<!-- Preview List -->
+<div class="md:col-span-12 bg-surface-container rounded-xl border border-outline-variant/30 overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant/30 bg-surface-variant/50 flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Projected Events</h3>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">LIVE PREVIEW</span>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-3 bg-surface-container-high rounded-lg border border-outline-variant/20">
+<p class="text-xs text-on-surface-variant">June 05, 2024</p>
+<p class="font-bold text-secondary">Week 1 Meeting</p>
+</div>
+<div class="p-3 bg-surface-container-high rounded-lg border border-outline-variant/20">
+<p class="text-xs text-on-surface-variant">June 12, 2024</p>
+<p class="font-bold text-secondary">Week 2 Meeting</p>
+</div>
+<div class="p-3 bg-surface-container-high rounded-lg border border-outline-variant/20">
+<p class="text-xs text-on-surface-variant">June 19, 2024</p>
+<p class="font-bold text-secondary text-opacity-50 italic">Unconfirmed</p>
+</div>
+<div class="p-3 bg-surface-container-high rounded-lg border border-outline-variant/20">
+<p class="text-xs text-on-surface-variant">June 26, 2024</p>
+<p class="font-bold text-secondary text-opacity-50 italic">Unconfirmed</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="mt-10 flex flex-col sm:flex-row gap-4 justify-end items-center">
+<button class="w-full sm:w-auto px-8 py-3 text-on-surface font-semibold hover:bg-stone-800 transition-colors rounded-xl border border-outline-variant">
+                Cancel Changes
+            </button>
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-bold rounded-xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+                Update Cadence
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-stone-950 text-orange-200 font-epilogue text-xs font-medium fixed bottom-0 w-full z-50 rounded-t-lg border-t border-stone-800 shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-stone-800 text-orange-200 rounded-xl px-3 py-1 shadow-inner" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-stone-300 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Members</span>
+</a>
+</nav>
+</body></html>
