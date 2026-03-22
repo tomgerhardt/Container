@@ -45,7 +45,11 @@ service cloud.firestore {
       // Members subcollection
       match /members/{uid} {
         allow read: if isMember(groupId);
-        allow write: if isAdmin(groupId) || (isAuth() && request.auth.uid == uid);
+        // create: user is writing their own doc (doc doesn't exist yet, so isAdmin
+        //         would call get() on a non-existent document which can deny).
+        allow create: if isAuth() && request.auth.uid == uid;
+        allow update: if isAdmin(groupId) || (isAuth() && request.auth.uid == uid);
+        allow delete: if isAdmin(groupId);
       }
 
       // Events subcollection
