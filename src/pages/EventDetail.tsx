@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, MapPin, CheckCircle, Circle, Pencil, Check, X } from "lucide-react";
+import { ArrowLeft, MapPin, CheckCircle, Circle, Pencil, Check, X, Trash2 } from "lucide-react";
 import { useGroup } from "@/contexts/GroupContext";
 import { useAuth } from "@/contexts/AuthContext";
 import {
   subscribeToEvents, subscribeToRsvps, upsertRsvp,
-  updateEvent,
+  updateEvent, deleteEvent,
 } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import type { GroupEvent, Rsvp, RsvpStatus } from "@/types";
 import { format } from "date-fns";
 import { Timestamp } from "firebase/firestore";
@@ -43,6 +47,7 @@ export function EventDetail() {
   const [editLocation, setEditLocation] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [saving, setSaving] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const isAdmin = myRole === "admin";
   const isPast = event ? event.date.toMillis() < Date.now() : false;
@@ -110,6 +115,12 @@ export function EventDetail() {
     });
   }
 
+  async function handleDelete() {
+    if (!activeGroup || !eventId) return;
+    await deleteEvent(activeGroup.id, eventId);
+    navigate(-1);
+  }
+
   async function toggleConfirmed() {
     if (!activeGroup || !eventId || !event) return;
     await updateEvent(activeGroup.id, eventId, { confirmed: !event.confirmed });
@@ -155,6 +166,12 @@ export function EventDetail() {
               {!editing && (
                 <Button variant="ghost" size="icon" onClick={startEdit}>
                   <Pencil className="h-4 w-4" />
+                </Button>
+              )}
+              {/* Delete button */}
+              {!editing && (
+                <Button variant="ghost" size="icon" onClick={() => setDeleteOpen(true)} className="text-destructive hover:text-destructive">
+                  <Trash2 className="h-4 w-4" />
                 </Button>
               )}
             </>
@@ -294,6 +311,22 @@ export function EventDetail() {
           </div>
         )}
       </section>
+      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Event?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the event. This cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
