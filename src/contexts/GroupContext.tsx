@@ -93,9 +93,10 @@ export function GroupProvider({ children }: { children: ReactNode }) {
 
   // Get my role
   useEffect(() => {
-    if (!activeGroupId || !user) { setMyRole(null); return; }
-    getMemberDoc(activeGroupId, user.uid).then((m) => setMyRole(m?.role ?? null));
-  }, [activeGroupId, user, members]);
+    if (!user) { setMyRole(null); return; }
+    const myMember = members.find((m) => m.uid === user.uid);
+    setMyRole(myMember?.role ?? null);
+  }, [user, members]);
 
   const refreshGroups = useCallback(() => {}, []);
 
