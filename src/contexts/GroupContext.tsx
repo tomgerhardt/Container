@@ -11,7 +11,6 @@ import type { Group, GroupMember } from "@/types";
 import {
   subscribeToGroup,
   subscribeToMembers,
-  getMemberDoc,
 } from "@/lib/firestore";
 import { db } from "@/lib/firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
