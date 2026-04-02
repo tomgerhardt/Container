@@ -1,26 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "resources",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "addedAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "libraryResources",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "addedAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "groupMemberships",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "uid", "order": "ASCENDING" }
-      ]
-    }
-  ],
+  "indexes": [],
   "fieldOverrides": []
 }
