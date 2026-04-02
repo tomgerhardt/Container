@@ -196,7 +196,7 @@ export function Home() {
 
       {/* Social Links / Channels */}
       <section className="rounded-xl border border-border p-5 bg-card">
-        <h2 className="text-lg font-bold mb-4">Channels</h2>
+        <h2 className="text-lg font-bold mb-4">Socials</h2>
         {editing ? (
           <div className="space-y-3">
             {editLinks.map((link, i) => (
