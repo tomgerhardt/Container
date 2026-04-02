@@ -226,9 +226,12 @@ export async function applyCadence(groupId: string, cadence: EventCadence) {
       batch.delete(d.ref);
     }
   }
-  // 2. Save cadence to group
+  // 2. Save cadence to group (strip undefined fields — Firestore rejects them)
   const cadenceDescription = buildCadenceDescription(cadence);
-  batch.update(doc(db, "groups", groupId), { cadence, cadenceDescription });
+  const sanitizedCadence = Object.fromEntries(
+    Object.entries(cadence).filter(([, v]) => v !== undefined)
+  );
+  batch.update(doc(db, "groups", groupId), { cadence: sanitizedCadence, cadenceDescription });
   await batch.commit();
 
   // 3. Generate new events
