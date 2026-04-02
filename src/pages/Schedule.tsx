@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pencil, Plus, MapPin, CheckCircle, Circle } from "lucide-react";
+import { Pencil, Plus, MapPin, CheckCircle, Circle, CalendarDays, Copy, Check as CheckIcon } from "lucide-react";
 import { useGroup } from "@/contexts/GroupContext";
 import { subscribeToEvents } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import { CadenceEditor } from "@/components/schedule/CadenceEditor";
 import { NewEventDialog } from "@/components/schedule/NewEventDialog";
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
+} from "@/components/ui/dialog";
 import type { GroupEvent, RsvpStatus } from "@/types";
 import { format } from "date-fns";
 import { subscribeToRsvps } from "@/lib/firestore";
@@ -89,6 +92,8 @@ export function Schedule() {
   const [events, setEvents] = useState<GroupEvent[]>([]);
   const [cadenceOpen, setCadenceOpen] = useState(false);
   const [newEventOpen, setNewEventOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const isAdmin = myRole === "admin";
 
@@ -99,6 +104,14 @@ export function Schedule() {
   }, [activeGroup]);
 
   if (!activeGroup) return null;
+
+  const icalUrl = `https://container-cc1fd.web.app/ical?groupId=${activeGroup.id}`;
+
+  async function copyUrl() {
+    await navigator.clipboard.writeText(icalUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
   const now = Date.now();
   const upcoming = events.filter((e) => e.date.toMillis() >= now);
@@ -111,11 +124,16 @@ export function Schedule() {
         <p className="text-sm text-muted-foreground flex-1">
           {activeGroup.cadenceDescription || "No schedule cadence set yet."}
         </p>
-        {isAdmin && (
-          <Button variant="ghost" size="icon" onClick={() => setCadenceOpen(true)} className="shrink-0 mt-[-2px]">
-            <Pencil className="h-4 w-4" />
+        <div className="flex gap-1 shrink-0 mt-[-2px]">
+          <Button variant="ghost" size="icon" onClick={() => setCalendarOpen(true)} title="Subscribe to calendar">
+            <CalendarDays className="h-4 w-4" />
           </Button>
-        )}
+          {isAdmin && (
+            <Button variant="ghost" size="icon" onClick={() => setCadenceOpen(true)}>
+              <Pencil className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Upcoming events */}
@@ -175,6 +193,34 @@ export function Schedule() {
           onClose={() => setNewEventOpen(false)}
         />
       )}
+
+      <Dialog open={calendarOpen} onOpenChange={setCalendarOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Subscribe to Calendar</DialogTitle>
+            <DialogDescription>
+              Add this group's events to Google Calendar or any calendar app. Events will stay in sync automatically.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 mt-2">
+            <div className="flex items-center gap-2 rounded-lg border border-border bg-muted p-3">
+              <code className="flex-1 text-xs break-all text-foreground">{icalUrl}</code>
+              <Button variant="ghost" size="icon" onClick={copyUrl} className="shrink-0">
+                {copied ? <CheckIcon className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
+              </Button>
+            </div>
+            <div className="text-sm text-muted-foreground space-y-1">
+              <p className="font-medium text-foreground">To add in Google Calendar:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Open Google Calendar on desktop</li>
+                <li>Click <strong>+</strong> next to "Other calendars"</li>
+                <li>Select <strong>"From URL"</strong></li>
+                <li>Paste the link above and click <strong>Add Calendar</strong></li>
+              </ol>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
