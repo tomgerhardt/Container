@@ -7,7 +7,22 @@ import { updateGroupContent, subscribeToEvents } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 import type { GroupEvent, SocialLink } from "@/types";
+
+const TIMEZONES = [
+  { value: "America/New_York", label: "Eastern (ET)" },
+  { value: "America/Chicago", label: "Central (CT)" },
+  { value: "America/Denver", label: "Mountain (MT)" },
+  { value: "America/Los_Angeles", label: "Pacific (PT)" },
+  { value: "America/Phoenix", label: "Arizona (no DST)" },
+  { value: "America/Anchorage", label: "Alaska (AKT)" },
+  { value: "Pacific/Honolulu", label: "Hawaii (HT)" },
+  { value: "Europe/London", label: "London (GMT/BST)" },
+  { value: "Europe/Paris", label: "Central Europe (CET)" },
+  { value: "Australia/Sydney", label: "Sydney (AEST)" },
+];
 import { format } from "date-fns";
 
 export function Home() {
@@ -21,6 +36,7 @@ export function Home() {
   const [editDesc, setEditDesc] = useState("");
   const [editAgreements, setEditAgreements] = useState("");
   const [editLinks, setEditLinks] = useState<SocialLink[]>([]);
+  const [editTimezone, setEditTimezone] = useState("");
   const [saving, setSaving] = useState(false);
 
   const isAdmin = myRole === "admin";
@@ -41,6 +57,7 @@ export function Home() {
     setEditDesc(activeGroup.description);
     setEditAgreements(activeGroup.agreements);
     setEditLinks(activeGroup.socialLinks ?? []);
+    setEditTimezone(activeGroup.timezone ?? "America/New_York");
     setEditing(true);
   }
 
@@ -52,6 +69,7 @@ export function Home() {
       description: editDesc,
       agreements: editAgreements,
       socialLinks: editLinks.filter((l) => l.label.trim() && l.url.trim()),
+      timezone: editTimezone,
     });
     setSaving(false);
     setEditing(false);
@@ -251,6 +269,22 @@ export function Home() {
           </div>
         )}
       </section>
+
+      {/* Timezone (edit mode only) */}
+      {editing && (
+        <section>
+          <Label>Calendar Timezone</Label>
+          <Select value={editTimezone} onValueChange={setEditTimezone}>
+            <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {TIMEZONES.map((tz) => (
+                <SelectItem key={tz.value} value={tz.value}>{tz.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground mt-1">Used for Google Calendar sync.</p>
+        </section>
+      )}
 
       {!user && (
         <p className="text-center text-sm text-muted-foreground py-8">Sign in to see your group.</p>

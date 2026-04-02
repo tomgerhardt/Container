@@ -17,6 +17,7 @@ export interface Group {
   socialLinks: SocialLink[];
   cadence: EventCadence | null;
   cadenceDescription: string;
+  timezone: string;
   createdAt: Timestamp;
   createdBy: string;
 }

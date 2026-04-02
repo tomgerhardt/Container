@@ -95,7 +95,7 @@ export function subscribeToGroup(groupId: string, cb: (g: Group) => void) {
 
 export async function updateGroupContent(
   groupId: string,
-  data: Partial<Pick<Group, "name" | "description" | "agreements" | "socialLinks">>
+  data: Partial<Pick<Group, "name" | "description" | "agreements" | "socialLinks" | "timezone">>
 ) {
   await updateDoc(doc(db, "groups", groupId), data);
 }

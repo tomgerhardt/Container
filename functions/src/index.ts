@@ -46,6 +46,8 @@ export const ical = onRequest({ cors: true }, async (req, res) => {
     .orderBy("date", "asc")
     .get();
 
+  const timezone = group.timezone || "America/New_York";
+
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -53,6 +55,7 @@ export const ical = onRequest({ cors: true }, async (req, res) => {
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     `X-WR-CALNAME:${escapeICS(group.name)}`,
+    `X-WR-TIMEZONE:${timezone}`,
   ];
 
   for (const doc of eventsSnap.docs) {
@@ -63,8 +66,8 @@ export const ical = onRequest({ cors: true }, async (req, res) => {
 
     lines.push("BEGIN:VEVENT");
     lines.push(`UID:${doc.id}@container-cc1fd`);
-    lines.push(`DTSTART:${icsDate(start)}`);
-    lines.push(`DTEND:${icsDate(end)}`);
+    lines.push(`DTSTART;TZID=${timezone}:${icsDate(start)}`);
+    lines.push(`DTEND;TZID=${timezone}:${icsDate(end)}`);
     lines.push(`SUMMARY:${escapeICS(group.name)}`);
     if (event.location) lines.push(`LOCATION:${escapeICS(event.location)}`);
     if (event.description) lines.push(`DESCRIPTION:${escapeICS(event.description)}`);
