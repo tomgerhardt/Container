@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGroup } from "@/contexts/GroupContext";
-import { getInvite, addMemberToGroup } from "@/lib/firestore";
+import { getInvite, addMemberToGroup, getMemberDoc } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import type { GroupInvite } from "@/types";
 
@@ -51,13 +51,15 @@ export function JoinGroup() {
     if (!invite || !user) return;
     setStatus("joining");
     try {
-      // addMemberToGroup uses batch.set() which is safe to call even if already a member
-      await addMemberToGroup(invite.groupId, invite.groupName, {
+      const existing = await getMemberDoc(invite.groupId, user.uid);
+      if (!existing) {
+        await addMemberToGroup(invite.groupId, invite.groupName, {
         uid: user.uid,
         displayName: profile?.displayName ?? user.displayName ?? "Unknown",
         email: user.email ?? "",
-        photoURL: user.photoURL,
-      });
+          photoURL: user.photoURL,
+        });
+      }
       setActiveGroupId(invite.groupId);
       setStatus("joined");
       setTimeout(() => navigate("/home", { replace: true }), 1000);
