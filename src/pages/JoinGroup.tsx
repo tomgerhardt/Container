@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGroup } from "@/contexts/GroupContext";
-import { getInvite, addMemberToGroup, getMemberDoc } from "@/lib/firestore";
+import { getInvite, addMemberToGroup } from "@/lib/firestore";
 import { Button } from "@/components/ui/button";
 import type { GroupInvite } from "@/types";
 
@@ -13,30 +13,51 @@ export function JoinGroup() {
   const { setActiveGroupId } = useGroup();
   const [invite, setInvite] = useState<GroupInvite | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "joining" | "joined" | "error">("loading");
+  const [authError, setAuthError] = useState<string | null>(null);
 
+  // Re-run when user changes so that after sign-in the invite is confirmed still valid
   useEffect(() => {
     if (!inviteId) { setStatus("error"); return; }
-    getInvite(inviteId).then((inv) => {
-      if (!inv) { setStatus("error"); return; }
-      setInvite(inv);
-      setStatus("ready");
-    });
-  }, [inviteId]);
+    setStatus("loading");
+    getInvite(inviteId)
+      .then((inv) => {
+        if (!inv) { setStatus("error"); return; }
+        setInvite(inv);
+        setStatus("ready");
+      })
+      .catch(() => setStatus("error"));
+  }, [inviteId, user]);
+
+  async function handleSignIn() {
+    setAuthError(null);
+    try {
+      await signInWithGoogle();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "";
+      if (
+        msg.includes("missing initial state") ||
+        msg.includes("storage-partitioned") ||
+        msg.includes("popup-blocked") ||
+        msg.includes("popup_blocked_by_browser")
+      ) {
+        setAuthError("Please open this link in Safari or Chrome to sign in — in-app browsers block Google sign-in.");
+      } else {
+        setAuthError("Sign-in failed. Please try again.");
+      }
+    }
+  }
 
   async function handleJoin() {
     if (!invite || !user) return;
     setStatus("joining");
     try {
-      // Check if already a member
-      const existing = await getMemberDoc(invite.groupId, user.uid);
-      if (!existing) {
-        await addMemberToGroup(invite.groupId, invite.groupName, {
-          uid: user.uid,
-          displayName: profile?.displayName ?? user.displayName ?? "Unknown",
-          email: user.email ?? "",
-          photoURL: user.photoURL,
-        });
-      }
+      // addMemberToGroup uses batch.set() which is safe to call even if already a member
+      await addMemberToGroup(invite.groupId, invite.groupName, {
+        uid: user.uid,
+        displayName: profile?.displayName ?? user.displayName ?? "Unknown",
+        email: user.email ?? "",
+        photoURL: user.photoURL,
+      });
       setActiveGroupId(invite.groupId);
       setStatus("joined");
       setTimeout(() => navigate("/home", { replace: true }), 1000);
@@ -84,7 +105,10 @@ export function JoinGroup() {
       {!user ? (
         <>
           <p className="text-sm text-muted-foreground">Sign in with Google to join.</p>
-          <Button onClick={signInWithGoogle} variant="outline" className="gap-3">
+          {authError && (
+            <p className="text-sm text-red-500 max-w-xs">{authError}</p>
+          )}
+          <Button onClick={handleSignIn} variant="outline" className="gap-3">
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
