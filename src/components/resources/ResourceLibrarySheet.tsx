@@ -66,30 +66,7 @@ export function ResourceLibrarySheet({ groupId, open, onClose }: Props) {
             </div>
           </SheetHeader>
 
-          <div className="mt-4 space-y-2">
-            {resources.length === 0 && (
-              <p className="text-sm text-muted-foreground text-center py-8">No library resources yet.</p>
-            )}
-            {resources.map((r) => (
-              <button
-                key={r.id}
-                onClick={() => setSelected(r)}
-                className="w-full flex items-center gap-3 p-3 rounded-xl border bg-card hover:bg-accent/50 transition-colors text-left"
-              >
-                {r.imageUrl ? (
-                  <img src={r.imageUrl} alt={r.title} className="h-12 w-12 rounded-lg object-cover shrink-0 bg-muted" />
-                ) : (
-                  <div className="h-12 w-12 rounded-lg bg-muted shrink-0 flex items-center justify-center text-lg font-bold text-muted-foreground">
-                    {r.title.charAt(0)}
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{r.title}</p>
-                  <p className="text-xs text-muted-foreground truncate">{r.url}</p>
-                </div>
-              </button>
-            ))}
-          </div>
+          <LibraryResourceList resources={resources} onSelect={setSelected} />
         </SheetContent>
       </Sheet>
 
@@ -98,20 +75,37 @@ export function ResourceLibrarySheet({ groupId, open, onClose }: Props) {
         <Dialog open={!!selected} onOpenChange={(v) => !v && setSelected(null)}>
           <DialogContent className="max-w-sm">
             <DialogHeader>
-              <DialogTitle>{selected.title}</DialogTitle>
+              <DialogTitle className="pr-4">{selected.title}</DialogTitle>
             </DialogHeader>
-            {selected.imageUrl && (
-              <img src={selected.imageUrl} alt={selected.title} className="w-full h-40 object-cover rounded-lg" />
-            )}
-            <a
-              href={selected.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-blue-600 hover:underline break-all"
-            >
-              {selected.url}
-            </a>
-            <p className="text-xs text-muted-foreground">Library resource</p>
+            <div className="space-y-2">
+              {(selected.category || selected.type) && (
+                <div className="flex gap-2 flex-wrap">
+                  {selected.category && (
+                    <span className="text-xs bg-muted px-2 py-0.5 rounded-full">{selected.category}</span>
+                  )}
+                  {selected.type && (
+                    <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">{selected.type}</span>
+                  )}
+                </div>
+              )}
+              {selected.author && (
+                <p className="text-sm text-muted-foreground">by {selected.author}</p>
+              )}
+              {selected.description && (
+                <p className="text-sm">{selected.description}</p>
+              )}
+              {selected.imageUrl && (
+                <img src={selected.imageUrl} alt={selected.title} className="w-full h-36 object-cover rounded-lg" />
+              )}
+              <a
+                href={selected.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-primary hover:underline break-all block"
+              >
+                {selected.url}
+              </a>
+            </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setSelected(null)}>Close</Button>
               <Button onClick={() => handleAddToGroup(selected)} disabled={adding}>
@@ -134,11 +128,81 @@ export function ResourceLibrarySheet({ groupId, open, onClose }: Props) {
   );
 }
 
+function LibraryResourceList({
+  resources,
+  onSelect,
+}: {
+  resources: LibraryResource[];
+  onSelect: (r: LibraryResource) => void;
+}) {
+  const categories = Array.from(new Set(resources.map((r) => r.category).filter(Boolean))) as string[];
+  const uncategorized = resources.filter((r) => !r.category);
+
+  if (resources.length === 0) {
+    return <p className="text-sm text-muted-foreground text-center py-8">No library resources yet.</p>;
+  }
+
+  function ResourceRow({ r }: { r: LibraryResource }) {
+    return (
+      <button
+        onClick={() => onSelect(r)}
+        className="w-full flex items-center gap-3 p-3 rounded-xl border bg-card hover:bg-accent/50 transition-colors text-left"
+      >
+        {r.imageUrl ? (
+          <img src={r.imageUrl} alt={r.title} className="h-12 w-12 rounded-lg object-cover shrink-0 bg-muted" />
+        ) : (
+          <div className="h-12 w-12 rounded-lg bg-muted shrink-0 flex items-center justify-center text-lg font-bold text-muted-foreground">
+            {r.title.charAt(0)}
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium line-clamp-2">{r.title}</p>
+          {r.author && <p className="text-xs text-muted-foreground truncate">{r.author}</p>}
+          {r.type && <span className="text-xs bg-primary/20 text-primary px-1.5 py-0.5 rounded-full">{r.type}</span>}
+        </div>
+      </button>
+    );
+  }
+
+  if (categories.length === 0) {
+    return (
+      <div className="mt-4 space-y-2">
+        {resources.map((r) => <ResourceRow key={r.id} r={r} />)}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 space-y-4">
+      {categories.map((cat) => (
+        <div key={cat}>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">{cat}</p>
+          <div className="space-y-2">
+            {resources.filter((r) => r.category === cat).map((r) => <ResourceRow key={r.id} r={r} />)}
+          </div>
+        </div>
+      ))}
+      {uncategorized.length > 0 && (
+        <div>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Other</p>
+          <div className="space-y-2">
+            {uncategorized.map((r) => <ResourceRow key={r.id} r={r} />)}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AddLibraryResourceDialog({
   open, onClose, uid,
 }: { open: boolean; onClose: () => void; uid: string }) {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
+  const [category, setCategory] = useState("");
+  const [type, setType] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -166,7 +230,16 @@ function AddLibraryResourceDialog({
       } else if (url.trim()) {
         imageUrl = await fetchOgImage(url.trim());
       }
-      await addLibraryResource({ title: title.trim(), url: url.trim(), imageUrl, addedBy: uid });
+      await addLibraryResource({
+        title: title.trim(),
+        url: url.trim(),
+        imageUrl,
+        addedBy: uid,
+        ...(category.trim() && { category: category.trim() }),
+        ...(type.trim() && { type: type.trim() }),
+        ...(author.trim() && { author: author.trim() }),
+        ...(description.trim() && { description: description.trim() }),
+      });
       onClose();
     } finally {
       setSaving(false);
@@ -175,7 +248,7 @@ function AddLibraryResourceDialog({
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent className="max-w-sm">
+      <DialogContent className="max-w-sm max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add to Library</DialogTitle>
         </DialogHeader>
@@ -187,6 +260,29 @@ function AddLibraryResourceDialog({
           <div>
             <Label>URL</Label>
             <Input value={url} onChange={(e) => setUrl(e.target.value)} type="url" className="mt-1" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <Label>Category</Label>
+              <Input value={category} onChange={(e) => setCategory(e.target.value)} className="mt-1" placeholder="e.g. Books" />
+            </div>
+            <div>
+              <Label>Type</Label>
+              <Input value={type} onChange={(e) => setType(e.target.value)} className="mt-1" placeholder="e.g. Video" />
+            </div>
+          </div>
+          <div>
+            <Label>Author / Source</Label>
+            <Input value={author} onChange={(e) => setAuthor(e.target.value)} className="mt-1" />
+          </div>
+          <div>
+            <Label>Description</Label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="mt-1 w-full rounded-md border bg-background px-3 py-2 text-sm min-h-[80px] resize-none focus:outline-none focus:ring-2 focus:ring-ring"
+              placeholder="Brief notes about this resource…"
+            />
           </div>
           <div>
             <Label>Image (optional)</Label>

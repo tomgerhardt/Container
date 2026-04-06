@@ -111,4 +111,8 @@ export interface LibraryResource {
   imageUrl: string | null;
   addedAt: Timestamp;
   addedBy: string;
+  category?: string;
+  type?: string;
+  author?: string;
+  description?: string;
 }

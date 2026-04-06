@@ -31,3 +31,6 @@ dist-ssr
 .firebase/
 firebase-debug.log
 firestore-debug.log
+
+# Service account key (never commit)
+scripts/serviceAccount.json
