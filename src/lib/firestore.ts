@@ -338,6 +338,17 @@ export async function addLibraryResource(resource: Omit<LibraryResource, "id" | 
   });
 }
 
+export async function updateLibraryResource(
+  id: string,
+  data: Partial<Omit<LibraryResource, "id" | "addedAt">>
+) {
+  await updateDoc(doc(db, "libraryResources", id), data);
+}
+
+export async function deleteLibraryResource(id: string) {
+  await deleteDoc(doc(db, "libraryResources", id));
+}
+
 // ── OG Image fetch ────────────────────────────────────────────────────────────
 
 export async function fetchOgImage(url: string): Promise<string | null> {

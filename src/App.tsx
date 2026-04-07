@@ -12,6 +12,7 @@ import { Members } from "@/pages/Members";
 import { JoinGroup } from "@/pages/JoinGroup";
 import { SeedGroup } from "@/pages/SeedGroup";
 import { GroupManagement } from "@/pages/GroupManagement";
+import { AdminLibrary } from "@/pages/AdminLibrary";
 import { NoGroup } from "@/pages/NoGroup";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
@@ -39,6 +40,10 @@ function AppRoutes() {
       <Route
         path="/group-management"
         element={<RequireAuth><AppShell><GroupManagement /></AppShell></RequireAuth>}
+      />
+      <Route
+        path="/admin/library"
+        element={<RequireAuth><AppShell><AdminLibrary /></AppShell></RequireAuth>}
       />
 
       <Route

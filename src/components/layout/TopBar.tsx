@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 export function TopBar() {
   const { activeGroup, groups, setActiveGroupId, refreshGroups } = useGroup();
   const { user, profile, logOut } = useAuth();
+  const isSuperAdmin = profile?.isSuperAdmin ?? false;
   const [menuOpen, setMenuOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   const [newGroupOpen, setNewGroupOpen] = useState(false);
@@ -120,6 +121,11 @@ export function TopBar() {
             <MenuItem onClick={() => { navigate("/group-management"); setMenuOpen(false); }}>
               Group management
             </MenuItem>
+            {isSuperAdmin && (
+              <MenuItem onClick={() => { navigate("/admin/library"); setMenuOpen(false); }}>
+                Library resources
+              </MenuItem>
+            )}
             <div className="my-2 h-px bg-border" />
             {user ? (
               <MenuItem onClick={() => { logOut(); setMenuOpen(false); }} className="text-destructive">
