@@ -29,9 +29,9 @@ function getNextOccurrence(from: Date, cadence: EventCadence, isFirst: boolean):
   if (frequency === "weekly") {
     const targetDays = cadence.daysOfWeek ?? [1]; // default Monday
     const d = new Date(from);
-    if (!isFirst) d.setDate(d.getDate() + 1);
+    if (!isFirst) d.setDate(d.getDate() + every * 7 - 1);
 
-    for (let i = 0; i < 7 * every * 2; i++) {
+    for (let i = 0; i < 14; i++) {
       if (targetDays.includes(d.getDay())) {
         return applyTime(d, cadence.time);
       }
